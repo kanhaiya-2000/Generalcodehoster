@@ -56,15 +56,16 @@ initial c = 1'b0;
 initial d = 1'b0;
 reg error,expected;
 initial error = 0;
-always begin 
-  a = a+ 1'b1;
-  #50
+always
+a = a+ 1'b1;
+always  #50
   b = b+1'b1;
-  #100
+always  #100
   c = c+ 1'b1;
-  #200
+always #200
   d = d+1'b1;
-  expected = (((a&b&c&d)|(c^a))~^d);
+always begin 
+  expected = (((a&b&c&d)|(c^a))~^d);   
   #25
   if((res!=expected)||(^res ===1'bx))begin
     error = error + 1;
